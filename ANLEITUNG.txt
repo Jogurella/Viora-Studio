@@ -1,0 +1,16 @@
+VIORA STUDIO 0.1.0 – WINDOWS
+
+1. ZIP vollständig in einen eigenen Ordner entpacken.
+2. VioraStudio.exe starten. Die .NET-Laufzeit ist enthalten.
+3. Tailscale verbinden, in Einstellungen die private Serveradresse eintragen.
+4. Galerieordner auf diesem PC auswählen oder anlegen, Speichern & verbinden.
+5. Bild/Video, Modell, Stil und Beschreibung wählen, Generieren drücken.
+
+Bei Video ist ein Startbild optional. Ohne Upload erzeugt der Server erst ein Bild und animiert es anschließend. Videos benötigen je nach Größe und Länge mehrere Minuten.
+
+Alle Ergebnisse werden im gewählten Galerieordner gespeichert. Die .swarm.json-Dateien enthalten Metadaten und Favoriten. Diese zusammen mit den Medien aufbewahren.
+
+Updates: Einstellungen > Nach Updates suchen. Ein neuer Release wird heruntergeladen und per SHA-256 geprüft. Danach App schließen und die neue VioraStudio.exe über die alte kopieren. Galerie und Einstellungen bleiben erhalten.
+
+Die App besitzt noch kein Herausgeberzertifikat. Eine echte Serververbindung ist erforderlich; die App enthält keine Modelle. iPhone/macOS werden getrennt bereitgestellt.
+Repository: https://github.com/Jogurella/Viora-Studio

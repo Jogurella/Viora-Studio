@@ -1,0 +1,15 @@
+.runtime/
+src/bin/
+src/obj/
+App/
+Galerie/
+*.user
+*.suo
+*.part
+*.swarm.json
+settings.json
+queue.json
+*.pfx
+*.p12
+*.mobileprovision
+.DS_Store

@@ -1,0 +1,30 @@
+name: Windows build
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', '.github/workflows/windows.yml']
+  pull_request:
+    paths: ['src/**', '.github/workflows/windows.yml']
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build
+        run: dotnet build src/SwarmStudio.csproj -c Release --nologo
+      - name: Publish self-contained Windows app
+        run: dotnet publish src/SwarmStudio.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -o .runtime/publish
+      - name: Validate package and connection safeguards
+        shell: pwsh
+        run: |
+          $output = Join-Path $PWD '.runtime/tests'
+          Start-Process -FilePath .runtime/publish/VioraStudio.exe -ArgumentList @('--selftest','--output',$output) -Wait
+          $result = Get-Content -LiteralPath (Join-Path $output 'selftest-result.json') -Raw | ConvertFrom-Json
+          if (!$result.ok) { throw 'Viora Studio validation failed' }

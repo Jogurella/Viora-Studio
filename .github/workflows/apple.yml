@@ -1,0 +1,19 @@
+name: Apple build
+on:
+  pull_request:
+    paths: ['apple/**', '.github/workflows/apple.yml']
+  push:
+    branches: [main, codex/apple]
+    paths: ['apple/**', '.github/workflows/apple.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path apple
+      - name: macOS compile
+        run: xcodebuild -project apple/VioraStudio.xcodeproj -scheme VioraStudio -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
+      - name: iPhone simulator compile
+        run: xcodebuild -project apple/VioraStudio.xcodeproj -scheme VioraStudio -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build

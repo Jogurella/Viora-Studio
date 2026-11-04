@@ -1,7 +1,7 @@
 .runtime/
 src/bin/
 src/obj/
-App/
+/App/
 Galerie/
 *.user
 *.suo
@@ -13,3 +13,16 @@ queue.json
 *.p12
 *.mobileprovision
 .DS_Store
+.DS_Store
+._*
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.ipa
+*.app/
+*.xcarchive/
+*.p12
+*.mobileprovision
+*.local.*
+.env*

@@ -33,3 +33,7 @@ dotnet publish src/SwarmStudio.csproj -c Release -r win-x64 --self-contained tru
 Die veröffentlichte EXE unterstützt `--selftest --output <Ordner>` für Prüfungen von Verbindungsadressen, Paketprüfsummen und Archivsicherheit. Echte Generierungstests benötigen einen laufenden privaten Server.
 
 API-Vertrag und plattformübergreifende Abstimmung: `docs/api/swarm-v1.md`, `docs/APPLE-HANDOFF.md`. Persönliche Serveradressen, Galerie, Einstellungen, Zertifikate und Modellgewichte gehören nicht ins öffentliche Repository.
+
+## Apple-Clients
+
+Native SwiftUI-Apps für iPhone und Mac liegen unter [`apple/`](apple/README.md). Xcode-Projekt: `apple/VioraStudio.xcodeproj`, Scheme `VioraStudio`. Modelle und Fortschritt kommen direkt von SwarmUI; Bilder/Videos werden lokal gespeichert. API-Ergänzung: [`docs/api/apple-v1.md`](docs/api/apple-v1.md). Tatsächlicher Build-/Teststand: [`docs/status/apple.md`](docs/status/apple.md). Apple-Auslieferung: [`docs/apple-releases.md`](docs/apple-releases.md).
